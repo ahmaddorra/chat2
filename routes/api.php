@@ -21,3 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 Route::get("/", [UserController::class,'index']);
+Route::get("/user", [UserController::class, 'user'])->middleware("auth:api");
+Route::get("/getuser/{id}", [UserController::class, 'getUser'])->middleware("auth:api");
+Route::get("/users", [UserController::class, 'users'])->middleware("auth:api");
+Route::get("/chat/user/{id}", [UserController::class, 'getChat'])->middleware("auth:api");
+Route::post("/chat/user/{id}", [UserController::class, 'send'])->middleware("auth:api");
